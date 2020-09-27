@@ -11,6 +11,15 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import environ
+
+
+env = environ.Env(
+    DEBUG=(bool, True),
+    SECRET_KEY=(str, 'thisisscret_key'),
+)
+
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,11 +29,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '7u_5t(7u4bv7_)!ta8jr=d(__sv*w=8(q5707z27(@)#a1niyj'
+# SECRET_KEY = '7u_5t(7u4bv7_)!ta8jr=d(__sv*w=8(q5707z27(@)#a1niyj'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+print(f"SECRET_KEY is {SECRET_KEY}")
+print(f"DEBUG is {DEBUG}")
 ALLOWED_HOSTS = []
 
 
@@ -158,3 +169,5 @@ ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
+
+DEFAULT_FROM_EMAIL = 'admin@djangobookstore.com'
