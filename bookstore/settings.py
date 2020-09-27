@@ -10,8 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
-from pathlib import Path
 import environ
+from pathlib import Path
 
 
 env = environ.Env(
@@ -34,8 +34,7 @@ SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-print(f"SECRET_KEY is {SECRET_KEY}")
-print(f"DEBUG is {DEBUG}")
+
 ALLOWED_HOSTS = []
 
 
@@ -49,11 +48,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'django_extensions',
     'crispy_forms',
     'allauth',
     'allauth.account',
     'users.apps.UsersConfig',
     'pages.apps.PagesConfig',
+    'books.apps.BooksConfig',
 ]
 
 MIDDLEWARE = [
