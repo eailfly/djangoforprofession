@@ -5,5 +5,7 @@
 
 {% block content %}
     <h1>Homepage</h1>
-    <img class="bookcover" src="{% static 'images/djangoforprofessionals.jpg' %}" alt="Django For Professionals">
+    <form action="{% url 'search_results' %}" class="form-inline mt-2 mt-md-0" method="get">
+        <input type="text" class="form-control mr-sm-2" name="q" placeholder="Search" aria-label="Search">
+    </form>
 {% endblock %}
